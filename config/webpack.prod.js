@@ -4,16 +4,20 @@ const commonConfig = require("./webpack.common");
 
 const domain = process.env.PRODUCTION_DOMAIN;
 
+console.log("domain = ", domain);
+
 const prodConfig = {
   mode: "production",
   output: {
     filename: "[name].[contenthash].js",
-    publicPath: '/container/latest/'
+    publicPath: "/container/latest/",
   },
   plugins: [
     new ModuleFederationPlugin({
       name: "container",
-      remotes: { management: `management@${domain}/management/remoteEntry.js` },
+      remotes: {
+        management: `management@${domain}/management/latest/remoteEntry.js`,
+      },
     }),
   ],
 };
