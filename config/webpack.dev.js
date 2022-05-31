@@ -16,8 +16,8 @@ const devConfig = {
     new ModuleFederationLogin({
       name: "container",
       remotes: {
-        management: 'management@http://localhost:8082/remoteEntry.js'
-      }
+        management: "management@http://localhost:8082/remoteEntry.js",
+      },
     }),
     new HtmlWebpackPlugin({ template: "./public/index.html" }),
     new webpack.ProvidePlugin({
