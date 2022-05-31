@@ -1,7 +1,6 @@
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationLogin = require("webpack/lib/container/ModuleFederationPlugin");
+const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const commonConfig = require("./webpack.common");
 
 const devConfig = {
@@ -13,13 +12,12 @@ const devConfig = {
     },
   },
   plugins: [
-    new ModuleFederationLogin({
+    new ModuleFederationPlugin({
       name: "container",
       remotes: {
         management: "management@http://localhost:8082/remoteEntry.js",
       },
     }),
-    new HtmlWebpackPlugin({ template: "./public/index.html" }),
     new webpack.ProvidePlugin({
       process: "process/browser",
     }),
