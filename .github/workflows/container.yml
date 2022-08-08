@@ -6,7 +6,6 @@ on:
       - main
   repository_dispatch:
     types: my-hairstylist-trigger
-
 jobs:
   build:
     runs-on: ubuntu-latest
