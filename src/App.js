@@ -1,12 +1,16 @@
 import React from "react";
+import { BrowserRouter } from "react-router-dom";
 import ManagementApp from "./components/ManagementApp";
+import Header from "./components/Header/Header";
 
 export default () => {
   return (
-    <div>
-      <h1>Hi there</h1>
-      <hr />
-      <ManagementApp />
-    </div>
+    <BrowserRouter>
+      <div>
+        <Header />
+        <hr />
+        <ManagementApp />
+      </div>
+    </BrowserRouter>
   );
 };
