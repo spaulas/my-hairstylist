@@ -8,6 +8,7 @@ const Header = () => {
     <>
       <h1>Hi there</h1>
       <button onClick={() => history.push("/")}>HOME</button>
+      <button onClick={() => history.push("/auth/sign-in")}>Sign in</button>
     </>
   );
 };

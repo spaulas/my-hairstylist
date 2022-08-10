@@ -1,6 +1,7 @@
 import React from "react";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import ManagementApp from "./components/ManagementApp";
+import AuthApp from "./components/AuthApp";
 import Header from "./components/Header/Header";
 
 export default () => {
@@ -8,8 +9,10 @@ export default () => {
     <BrowserRouter>
       <div>
         <Header />
-        <hr />
-        <ManagementApp />
+        <Switch>
+          <Route path="/auth" component={AuthApp} />
+          <Route path="/" component={ManagementApp } />
+        </Switch>
       </div>
     </BrowserRouter>
   );
