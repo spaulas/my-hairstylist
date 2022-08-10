@@ -10,6 +10,7 @@ export default () => {
       <div>
         <Header />
         <Switch>
+          
           <Route path="/auth" component={AuthApp} />
           <Route path="/" component={ManagementApp } />
         </Switch>
