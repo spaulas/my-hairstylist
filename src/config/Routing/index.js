@@ -14,12 +14,13 @@ const Routing = () => {
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <Routes>
-        <Route path="/" element={<ManagementLazy />}></Route>
+        <Route path="/" element={<div>THIS IS THE CONTAINER!</div>} />
+        {/*  <Route path="/" element={<ManagementLazy />}></Route>
         <Route path="/pricing" element={<ManagementLazy />}></Route>
         <Route path="/auth" element={<AuthLazy />}>
           <Route path="sign-in" element={<AuthLazy />} />
-          {/* TODO find how to do this */}
-        </Route>
+          {/* TODO find how to do this * /}
+        </Route> */}
       </Routes>
     </Suspense>
   );
