@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { Route, useLocation, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
 const ManagementLazy = lazy(() =>
@@ -10,18 +10,20 @@ const AuthLazy = lazy(() =>
 );
 
 const Routing = () => {
-  const location = useLocation();
-  console.log('location = ', location)
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <Routes>
-        <Route path="/" element={<div>THIS IS THE CONTAINER!</div>} />
-        {/*  <Route path="/" element={<ManagementLazy />}></Route>
-        <Route path="/pricing" element={<ManagementLazy />}></Route>
-        <Route path="/auth" element={<AuthLazy />}>
-          <Route path="sign-in" element={<AuthLazy />} />
-          {/* TODO find how to do this * /}
-        </Route> */}
+        <Route path="/" element={<div>MAIN</div>}></Route>
+        {["/clients", "/employees"].map((path, index) => (
+          <Route
+            path={path}
+            key={`management_${index}`}
+            element={<ManagementLazy />}
+          />
+        ))}
+        {["/auth", "/auth/sign-in", "/auth/sign-up"].map((path, index) => (
+          <Route path={path} key={`auth_${index}`} element={<AuthLazy />} />
+        ))}
       </Routes>
     </Suspense>
   );

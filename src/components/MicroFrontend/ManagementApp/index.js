@@ -1,28 +1,26 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useContext } from "react";
 import { mount } from "management/ManagementApp";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, UNSAFE_NavigationContext } from "react-router-dom";
 
 const ManagementApp = () => {
+  console.log("----- MANAGEMENT APP CALL ----");
   const ref = useRef(null);
   const location = useLocation();
-  const navigate = useNavigate();
-  let onParentNavigate = () => {};
+  const { navigator } = useContext(UNSAFE_NavigationContext);
 
   useEffect(() => {
-    ({ onParentNavigate } = mount(ref.current, {
+    const { onParentNavigate } = mount(ref.current, {
       initialPath: location.pathname,
       onNavigate: ({ pathname: nextPathname }) => {
-        const { pathname } = history.location;
+        const { pathname } = location;
         if (nextPathname !== pathname) {
-          navigate(nextPathname);
+          navigator.push(nextPathname);
         }
       },
-    }));
-  }, []);
+    });
 
-  useEffect(() => {
-    onParentNavigate(location);
-  }, [location.pathname]);
+    navigator.listen(onParentNavigate);
+  }, []);
 
   return <div ref={ref} />;
 };
