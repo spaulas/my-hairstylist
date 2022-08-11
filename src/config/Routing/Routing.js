@@ -1,14 +1,17 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Switch, Route } from "react-router-dom";
-import ManagementApp from "../../components/ManagementApp";
-import AuthApp from "../../components/AuthApp";
+
+const ManagementLazy = lazy(() => import("../../components/ManagementApp"));
+const AuthLazy = lazy(() => import("../../components/AuthApp"));
 
 const Routing = () => {
   return (
-    <Switch>
-      <Route path="/auth" component={AuthApp} />
-      <Route path="/" component={ManagementApp} />
-    </Switch>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Switch>
+        <Route path="/auth" component={AuthLazy} />
+        <Route path="/" component={ManagementLazy} />
+      </Switch>
+    </Suspense>
   );
 };
 
