@@ -1,6 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import LoadingSpinner from "../../components/LoadingSpinner";
+import managementRoutes from "management/routes";
+import authRoutes from "auth/routes";
 
 const ManagementLazy = lazy(() =>
   import("../../components/MicroFrontend/ManagementApp/index")
@@ -10,18 +12,20 @@ const AuthLazy = lazy(() =>
 );
 
 const Routing = () => {
+  console.log('authRoutes = ', authRoutes)
+  console.log('managementRoutes = ', managementRoutes)
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <Routes>
         <Route path="/" element={<div>MAIN</div>}></Route>
-        {["/clients", "/employees"].map((path, index) => (
+        {managementRoutes.map((path, index) => (
           <Route
             path={path}
             key={`management_${index}`}
             element={<ManagementLazy />}
           />
         ))}
-        {["/auth", "/auth/sign-in", "/auth/sign-up"].map((path, index) => (
+        {authRoutes.map((path, index) => (
           <Route path={path} key={`auth_${index}`} element={<AuthLazy />} />
         ))}
       </Routes>
