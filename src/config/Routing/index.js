@@ -11,6 +11,7 @@ const AuthLazy = lazy(() =>
 
 const Routing = () => {
   const location = useLocation();
+  console.log('location = ', location)
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <Routes>
