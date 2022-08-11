@@ -5,14 +5,14 @@ import AuthApp from "./components/AuthApp";
 import Header from "./components/Header/Header";
 
 export default () => {
+  console.log("APP container");
   return (
     <BrowserRouter>
       <div>
         <Header />
         <Switch>
-          
           <Route path="/auth" component={AuthApp} />
-          <Route path="/" component={ManagementApp } />
+          <Route path="/" component={ManagementApp} />
         </Switch>
       </div>
     </BrowserRouter>
