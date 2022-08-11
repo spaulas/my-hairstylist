@@ -1,6 +1,6 @@
 import React from "react";
-import Header from "./Header/Header";
-import Routing from "../../config/Routing/Routing";
+import Header from "./Header";
+import Routing from "../../config/Routing";
 
 const Layout = () => {
   return (
