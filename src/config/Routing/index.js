@@ -12,8 +12,6 @@ const AuthLazy = lazy(() =>
 );
 
 const Routing = () => {
-  console.log('authRoutes = ', authRoutes)
-  console.log('managementRoutes = ', managementRoutes)
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <Routes>

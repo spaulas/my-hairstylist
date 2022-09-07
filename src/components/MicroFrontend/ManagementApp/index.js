@@ -3,7 +3,6 @@ import { mount } from "management/ManagementApp";
 import { useLocation, UNSAFE_NavigationContext } from "react-router-dom";
 
 const ManagementApp = () => {
-  console.log("----- MANAGEMENT APP CALL ----");
   const ref = useRef(null);
   const location = useLocation();
   const { navigator } = useContext(UNSAFE_NavigationContext);

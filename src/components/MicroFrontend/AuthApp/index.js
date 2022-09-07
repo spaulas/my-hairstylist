@@ -3,7 +3,6 @@ import { mount } from "auth/AuthApp";
 import { useLocation, UNSAFE_NavigationContext } from "react-router-dom";
 
 const AuthApp = () => {
-  console.log("----- AUTH APP CALL ----");
   const ref = useRef(null);
   const location = useLocation();
   const { navigator } = useContext(UNSAFE_NavigationContext);
